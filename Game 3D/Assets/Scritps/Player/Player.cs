@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
       public KeyCode jumpKeyCode = KeyCode.Space;
 
       [Header("Run Setup")]   
-        public KeyCode keyRun = KeyCode.LeftShift;    
+        public KeyCode keyRunCode = KeyCode.LeftShift;    
         public float speedRun = 1.5f;
 
       void Update()    
@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
            var isWalking = inputAxisVertical != 0;        
            if(isWalking)        
            {            
-            if(Input.GetKey(keyRun))            
+            if(Input.GetKey(keyRunCode))            
             {                
                 speedVector *= speedRun;                
                 animator.speed = speedRun;
