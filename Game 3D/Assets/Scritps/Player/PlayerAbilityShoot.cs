@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerAbilityShoot : PlayerAbilityBase
 {
-
+   
    public GunBase gunBaseR;
    public GunBase gunBaseT;
    public GunBase gunBaseY;
