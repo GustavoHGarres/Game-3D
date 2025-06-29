@@ -61,6 +61,8 @@ namespace Enemy
             if(flashcolor != null) flashcolor.Flash();
             if(particleSystem != null) particleSystem.Emit(15);
 
+            transform.position -= transform.forward; // Quando recebe impacto do projetil desloca o inimigo para frente;
+
             _currentLife -= f;
 
             if(_currentLife <= 0)
@@ -88,6 +90,22 @@ namespace Enemy
             // throw new System.NotImplementedException(); //Lembra o implemento da interface
             Debug.Log("Damage");
             OnDamage(damage);
+        }
+
+        public void Damage(float damage, Vector3 dir) // Quando recebe impacto do projetil desloca o inimigo para frente;
+        {
+            OnDamage(damage);
+            //transform.DOMove(transform.postion - dir, .1f); //Rever não aceito o codigo transform.
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            Player p = collision.transform.GetComponent<Player>();
+
+            if (p != null) //Se o player bateu no inimigo;
+            {
+                p.Damage(1); //Vem da Lista FlashColor
+            }
         }
    }
 

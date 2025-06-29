@@ -22,8 +22,15 @@ public class ProjectileBase : MonoBehaviour
    private void OnCollisionEnter(Collision collision)
    {
        var damageable = collision.transform.GetComponent<IDamageable>();
-       if (damageable != null) damageable.Damage(damageAmount);
-       Destroy(gameObject); // Destroy a bala;
+           if (damageable != null) 
+            {
+               Vector3 dir = collision.transform.position - transform.position; //// Quando recebe impacto do projetil desloca o inimigo para frente;
+               dir = -dir.normalized;
+               dir.y = 0; // Inimigo permanece na mesma posição;
+
+               damageable.Damage(damageAmount, dir);
+            }
+            Destroy(gameObject); // Destroy a bala;
 
    }
 }
